@@ -13,4 +13,6 @@ cat $BACKUP_FILE | sed -e 's/^PRETRAIT\( DAB\)* \([0-9]*\) \(.*\) \(.*\) CB\\*\(
          sed -e 's/^PCHQ\. N\.\([0-9]*\).*/N\1\nMchèque/' | \
          sed -e 's/^PPRLV\( SEPA\)* \(.*\)/P\2\nMprélèvement\1/' | \
          sed -e 's/^PVIR \(.*\)/Mvirement au motif : \1/' | \
-         sed -e 's/^PPAIEMENT CARTE \([0-9]*\) \([0-9A-Z]*\) \(.*\)/P\3\nMeffectue le \1 en \2/' > $NEW_FILE
+         sed -e 's/^PPAIEMENT CARTE \([0-9]*\) \([0-9A-Z]*\) \(.*\)/P\3\nMeffectue le \1 en \2/' | \
+	 sed -e 's/^PAVOIR \([0-9]*\) \([0-9A-Z]*\) \(.*\)/P\3\nMavoir du \1 (en \2)/' > $NEW_FILE
+
