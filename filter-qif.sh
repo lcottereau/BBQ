@@ -12,4 +12,5 @@ echo "Traitement du fichier $BACKUP_FILE et création du fichier $NEW_FILE"
 cat $BACKUP_FILE | sed -e 's/^PRETRAIT\( DAB\)* \([0-9]*\) \(.*\) \(.*\) CB\\*\([0-9]*\)/PLIQUIDE\nMretrait du \2 à \3 avec la CB \4/' | \
          sed -e 's/^PCHQ\. N\.\([0-9]*\).*/N\1\nMchèque/' | \
          sed -e 's/^PPRLV\( SEPA\)* \(.*\)/P\2\nMprélèvement\1/' | \
-         sed -e 's/^PVIR \(.*\)/Mvirement au motif : \1/' > $NEW_FILE
+         sed -e 's/^PVIR \(.*\)/Mvirement au motif : \1/' | \
+         sed -e 's/^PPAIEMENT CARTE \([0-9]*\) \([0-9A-Z]*\) \(.*\)/P\3\nMeffectue le \1 en \2/' > $NEW_FILE
